@@ -1,0 +1,7 @@
+{
+  "window.zoomLevel": 0,
+  "workbench.colorTheme": "Ayu Mirage Bordered",
+  "emmet.includeLanguages": {
+    "javascript": "javascriptreact"
+  }
+}
