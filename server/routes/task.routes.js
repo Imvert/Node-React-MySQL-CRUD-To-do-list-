@@ -7,17 +7,16 @@ import {
   getTasks,
 } from "../controllers/tasks.controllers.js";
 
-import { tokenEstractor } from "../middleware/userEstractor.js";
-
 const router = Router();
-router.get("/tasks", tokenEstractor, getTasks);
 
-router.get("/task/:id", tokenEstractor, getTask);
+router.get("/tasks", getTasks);
 
-router.post("/task", tokenEstractor, createTask);
+router.get("/task/:id", getTask);
 
-router.put("/task/:id", tokenEstractor, updateTask);
+router.post("/tasks", createTask);
 
-router.delete("/task/:id", tokenEstractor, deleteTasks);
+router.put("/task/:id", updateTask);
+
+router.delete("/task/:id", deleteTasks);
 
 export default router;

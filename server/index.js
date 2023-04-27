@@ -12,13 +12,8 @@ app.use(cors());
 app.use(express.json());
 
 //Rutas usadas
-app.use("/api", indexRoutes);
-app.use("/api", tasksRoutes);
-
-// app.use((req, res, next) => {
-//   res.status(404).json({ message: "endpoint not found" });
-//   next();
-// });
+app.use(indexRoutes);
+app.use(tasksRoutes);
 
 app.use(express.static(join(__dirname, "../client/dist")));
 
