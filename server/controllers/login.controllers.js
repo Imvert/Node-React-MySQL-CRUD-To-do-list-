@@ -14,12 +14,15 @@ export const loginUser = async (req, res) => {
     ]);
 
     const passwordCorrect =
-      user === null ? false : await bcrypt.compare(password, user[0].password);
+      user.length <= 0
+        ? false
+        : await bcrypt.compare(password, user[0].password);
 
-    if (!user && passwordCorrect) {
+    if (!(user && passwordCorrect)) {
       res.status(401).json({
         error: "invalid user or password",
       });
+      return;
     }
 
     const userForToken = {
@@ -41,7 +44,6 @@ export const loginUser = async (req, res) => {
 
     res.cookie("cockie_final", serialized);
 
-    // aqui ya no tendria que enviar el token como respuesta json
     res.status(200).json({
       id: user[0].id,
       name: user[0].name,
