@@ -25,6 +25,7 @@ export const TaskContextProvider = ({ children }) => {
     const response = await getTasksRequest();
     setTasks(response.data);
   }
+
   const deleteTask = async (id) => {
     try {
       await deleteTaskRequest(id);
@@ -37,7 +38,6 @@ export const TaskContextProvider = ({ children }) => {
   const createTask = async (task) => {
     try {
       await createTaskRequest(task);
-      // setTasks([...tasks, response.data]);
     } catch (error) {
       console.log(error);
     }

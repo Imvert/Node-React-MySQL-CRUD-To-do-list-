@@ -6,7 +6,8 @@ function TasksPage() {
   const { tasks, loadTasks } = useTasks();
 
   useEffect(() => {
-    loadTasks();
+    // console.log(user);
+    // loadTasks(); Volver a pedir el dato
   }, []);
 
   function renderMain() {
