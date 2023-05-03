@@ -15,4 +15,15 @@ router.get("/ping", async (req, res) => {
   res.json("ping");
 });
 
+//probando uso de cookies
+router.get("/setCookie", (req, res) => {
+  res.cookie("miCokkie", "datos de prueba", {
+    httpOnly: true,
+    secure: false,
+    sameSite: "lax",
+    maxAge: 3000,
+  });
+  res.send("cookie estalecida");
+});
+
 export default router;

@@ -2,7 +2,6 @@ import bcrypt from "bcrypt";
 import { pool } from "../db.js";
 import jwt from "jsonwebtoken";
 import { Secret_key } from "../../config.js";
-import { serialize } from "cookie";
 
 export const loginUser = async (req, res) => {
   const { body } = req;
@@ -22,6 +21,7 @@ export const loginUser = async (req, res) => {
       res.status(401).json({
         error: "invalid user or password",
       });
+
       return;
     }
 
@@ -34,15 +34,16 @@ export const loginUser = async (req, res) => {
       Secret_key
     );
 
-    const serialized = serialize(token, {
-      httpOnly: true,
-      secure: false,
-      sameSite: "strict",
-      maxAge: 1000 * 60 * 60 * 24 * 30,
-      path: "/",
-    });
+    // Averiguar porque no se establece la cookie en el navegador
+    //  y en thunder client si
 
-    res.cookie("cockie_final", serialized);
+    // res.cookie("myTokenName", token, {
+    //   httpOnly: true,
+    //   secure: false,
+    //   sameSite: "lax",
+    //   path: "/",
+    //   maxAge: 1000 * 60 * 60 * 24 * 30,
+    // });
 
     res.status(200).json({
       id: user[0].id,
