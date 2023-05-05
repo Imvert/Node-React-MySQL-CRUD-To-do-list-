@@ -34,7 +34,7 @@ export const getTask = async (req, res) => {
 
 export const createTask = async (req, res) => {
   const { title, description } = req.body;
-
+  const { user_id } = req;
   try {
     const [result] = await pool.query(
       "INSERT INTO tasks(title,description,user_id) VALUES(?,?,?)",
@@ -48,7 +48,6 @@ export const createTask = async (req, res) => {
 };
 
 export const updateTask = async (req, res) => {
-  const { user_id } = req;
   try {
     const result = await pool.query(
       "UPDATE tasks SET ? WHERE id = ? AND user_id = ?",
