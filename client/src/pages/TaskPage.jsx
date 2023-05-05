@@ -1,13 +1,16 @@
 import { useEffect } from "react";
 import TaskCard from "../components/TaskCard";
 import { useTasks } from "../context/TaskContext";
+import { useUser } from "../context/UserContext";
 
 function TasksPage() {
   const { tasks, loadTasks } = useTasks();
+  const { user, loadUser } = useUser();
+
+  const { token } = user;
 
   useEffect(() => {
-    // console.log(user);
-    // loadTasks(); Volver a pedir el dato
+    loadTasks(token);
   }, []);
 
   function renderMain() {
@@ -19,7 +22,7 @@ function TasksPage() {
 
   return (
     <div>
-      <h1 className="text-5xl text-white font-bold text-center">Tasks</h1>
+      <h1 className="text-5xl text-white font-bold text-center pb-5">Tasks</h1>
       <div className="grid grid-cols-3 gap-2">{renderMain()}</div>
     </div>
   );

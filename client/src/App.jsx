@@ -11,9 +11,9 @@ import Register from "./pages/Register";
 function App() {
   return (
     <div className="bg-zinc-900 h-screen">
-      <Navbar />
-      <div className="container mx-auto py-4">
-        <UserContextProvider>
+      <UserContextProvider>
+        <Navbar />
+        <div className="container mx-auto py-4">
           <TaskContextProvider>
             <Routes>
               <Route path="/" element={<Login />}></Route>
@@ -24,8 +24,8 @@ function App() {
               <Route path="*" element={<NotFound />}></Route>
             </Routes>
           </TaskContextProvider>
-        </UserContextProvider>
-      </div>
+        </div>
+      </UserContextProvider>
     </div>
   );
 }

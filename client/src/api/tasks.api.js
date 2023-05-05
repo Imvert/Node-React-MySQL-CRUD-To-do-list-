@@ -1,7 +1,14 @@
 import axios from "axios";
 
-export const getTasksRequest = async () =>
-  await axios.get("http://localhost:4001/api/tasks");
+export const getTasksRequest = async (token) => {
+  const config = {
+    headers: {
+      Authorization: `Bearer ${token}`,
+    },
+  };
+  const response = await axios.get("http://localhost:4001/api/tasks", config);
+  return response;
+};
 
 export const createTaskRequest = async (task) =>
   await axios.post("http://localhost:4001/api/task", task);

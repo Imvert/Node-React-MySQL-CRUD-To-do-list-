@@ -21,8 +21,8 @@ export const useTasks = () => {
 export const TaskContextProvider = ({ children }) => {
   const [tasks, setTasks] = useState([]);
 
-  async function loadTasks() {
-    const response = await getTasksRequest();
+  async function loadTasks(token) {
+    const response = await getTasksRequest(token);
     setTasks(response.data);
   }
 

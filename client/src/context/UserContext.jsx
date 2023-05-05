@@ -6,7 +6,7 @@ export const UserContext = createContext();
 export const useUser = () => {
   const context = useContext(UserContext);
   if (!context) {
-    throw new Error("useUser must be within a TaskContextProvider");
+    throw new Error("useUser must be within a UserContextProvider");
   }
   return context;
 };
