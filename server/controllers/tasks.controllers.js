@@ -48,8 +48,9 @@ export const createTask = async (req, res) => {
 };
 
 export const updateTask = async (req, res) => {
+  const { user_id } = req;
   try {
-    const result = await pool.query(
+    const [result] = await pool.query(
       "UPDATE tasks SET ? WHERE id = ? AND user_id = ?",
       [req.body, req.params.id, user_id]
     );
