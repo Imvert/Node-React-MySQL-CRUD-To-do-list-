@@ -28,6 +28,7 @@ export const UserContextProvider = ({ children }) => {
     <UserContext.Provider
       value={{
         user,
+        setUser,
         loadUser,
       }}
     >

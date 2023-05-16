@@ -22,6 +22,11 @@ export default function Login() {
         password,
       });
 
+      window.localStorage.setItem(
+        "loggedNoteAppUser",
+        JSON.stringify(response)
+      );
+
       if (response == undefined) {
         setErrorMessage("wrong credentials");
         setTimeout(() => {

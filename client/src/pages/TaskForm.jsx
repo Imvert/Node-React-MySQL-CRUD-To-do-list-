@@ -2,20 +2,25 @@ import { Form, Formik } from "formik";
 import { useEffect, useState } from "react";
 import { useParams, useNavigate } from "react-router-dom";
 import { useTasks } from "../context/TaskContext";
+import { useUser } from "../context/UserContext";
+import confetti from "canvas-confetti";
 
 function TaskForm() {
+  const [errorMsg, setErrorMsg] = useState(null);
+  const { user } = useUser();
   const { createTask, getTask, updateTask } = useTasks();
+  const { token } = user;
   const [task, setTask] = useState({
     title: "",
     description: "",
   });
-  const params = useParams();
+  const params = useParams(); 
   const navigate = useNavigate();
 
   useEffect(() => {
     const loadTask = async () => {
       if (params.id) {
-        const task = await getTask(params.id);
+        const task = await getTask(params.id, token);
         setTask({ title: task.title, description: task.description });
       }
     };
@@ -29,11 +34,15 @@ function TaskForm() {
         onSubmit={async (values) => {
           console.log(values);
           if (params.id) {
-            await updateTask(params.id, values);
+            await updateTask(params.id, values, token);
           } else {
-            createTask(values);
+            createTask(values, token);
           }
-          navigate("/");
+          confetti();
+          setTimeout(() => {
+            navigate("/tasks");
+          }, 2000);
+
           setTask({ title: "", description: "" });
         }}
       >
@@ -73,6 +82,7 @@ function TaskForm() {
           </Form>
         )}
       </Formik>
+      <p style={{ color: "red" }}>{errorMsg}</p>
     </div>
   );
 }

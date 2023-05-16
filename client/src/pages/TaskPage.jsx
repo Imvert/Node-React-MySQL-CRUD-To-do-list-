@@ -4,13 +4,24 @@ import { useTasks } from "../context/TaskContext";
 import { useUser } from "../context/UserContext";
 
 function TasksPage() {
-  const { tasks, loadTasks } = useTasks();
-  const { user, loadUser } = useUser();
+  const { tasks, loadTasks, setTasks } = useTasks();
+  const { user } = useUser();
 
   const { token } = user;
+  async function getTaks() {
+    const { data } = await loadTasks(token);
+    window.localStorage.setItem("tasksApp", JSON.stringify(data));
+  }
+  useEffect(() => {
+    getTaks();
+  }, []);
 
   useEffect(() => {
-    loadTasks(token);
+    const taskslocal = window.localStorage.getItem("tasksApp");
+    if (taskslocal) {
+      const data = JSON.parse(taskslocal);
+      setTasks(data);
+    }
   }, []);
 
   function renderMain() {

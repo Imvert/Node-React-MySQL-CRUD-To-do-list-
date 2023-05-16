@@ -1,13 +1,15 @@
 import React from "react";
 import { useNavigate } from "react-router-dom";
 import { useTasks } from "../context/TaskContext";
+import { useUser } from "../context/UserContext";
 
 function TaskCard({ task }) {
   const { deleteTask, toggleTaskDone } = useTasks();
+  const { user } = useUser();
   const navigate = useNavigate();
 
   const handleDone = async () => {
-    await toggleTaskDone(task.id);
+    await toggleTaskDone(task.id, user.token);
   };
 
   return (
@@ -22,7 +24,7 @@ function TaskCard({ task }) {
         <button
           className="bg-red-500 px-2 py-1 text-white"
           onClick={() => {
-            deleteTask(task.id);
+            deleteTask(task.id, user.token);
           }}
         >
           Delete

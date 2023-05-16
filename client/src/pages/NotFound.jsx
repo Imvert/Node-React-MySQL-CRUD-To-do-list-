@@ -1,5 +1,13 @@
 import React from "react";
 
 export default function NotFound() {
-  return <div>Not Found </div>;
+  return (
+    <div>
+      <img
+        className="ml-64 pt-5"
+        src="../public/assets/page-notFound.png"
+        alt="no encontrada"
+      />
+    </div>
+  );
 }
