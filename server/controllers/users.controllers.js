@@ -1,7 +1,6 @@
 import bcrypt from "bcrypt";
 import { pool } from "../db.js";
 
-
 export const createUser = async (req, res) => {
   const { name, lastname, username, password } = req.body;
   const passwordHash = await bcrypt.hash(password, 10);
@@ -18,11 +17,7 @@ export const createUser = async (req, res) => {
       lastname,
       username,
     });
-
-    console.log(name,lastname,username);
   } catch (error) {
     return res.status(500).json({ msg: error.msg });
   }
 };
-
-

@@ -12,17 +12,20 @@ export default function Navbar() {
   }
   useEffect(() => {
     const loggedUserJson = window.localStorage.getItem("loggedNoteAppUser");
-    if (loggedUserJson) {
-      const userData = JSON.parse(loggedUserJson);
-      setUser(userData);
+    try {
+      if (loggedUserJson) {
+        const userData = JSON.parse(loggedUserJson);
+        setUser(userData);
+      }
+    } catch (error) {
+      console.error(error);
     }
   }, []);
 
   return (
     <div className="bg-zinc-700 flex justify-between px-20 py-2">
-      <Link to={"/tasks"}>
-        <h1 className="text-white font-bold text-2xl">React - MySQL</h1>
-      </Link>
+      <h1 className="text-white font-bold text-2xl">React - MySQL</h1>
+
       <h3 className="text-white mr-10">
         📘 Notas de {user?.name || "la comunidad"}
       </h3>

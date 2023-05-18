@@ -14,7 +14,7 @@ function TaskForm() {
     title: "",
     description: "",
   });
-  const params = useParams(); 
+  const params = useParams();
   const navigate = useNavigate();
 
   useEffect(() => {
@@ -57,6 +57,7 @@ function TaskForm() {
             <label className="block">Title</label>
             <input
               type="text"
+              required
               className="py-2 px-1 rounded-sm w-full"
               onChange={handleChange}
               name="title"
@@ -65,6 +66,7 @@ function TaskForm() {
             />
             <label className="block">Description</label>
             <textarea
+              required
               name="description"
               className="py-2 px-1 rounded-sm w-full"
               onChange={handleChange}

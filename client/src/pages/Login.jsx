@@ -59,6 +59,7 @@ export default function Login() {
           <p>
             <label>Username</label>
             <input
+              required
               type="text"
               value={username}
               onChange={({ target }) => setUsername(target.value)}
@@ -71,6 +72,7 @@ export default function Login() {
           <p>
             <label>Password</label>
             <input
+              required
               type="password"
               className="input"
               value={password}
@@ -98,7 +100,7 @@ export default function Login() {
             onClick={() => navigate(`/register`)}
           />
         </p>
-        <p style={{ color: "red ", fontSize: "20px" }}>{errorMessage}</p>
+        <p style={{ color: "red", fontSize: "20px" }}>{errorMessage}</p>
       </div>
     </div>
   );
