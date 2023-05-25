@@ -34,17 +34,6 @@ export const loginUser = async (req, res) => {
       Secret_key
     );
 
-    // Averiguar porque no se establece la cookie en el navegador
-    //  y en thunder client si
-
-    // res.cookie("myTokenName", token, {
-    //   httpOnly: true,
-    //   secure: false,
-    //   sameSite: "lax",
-    //   path: "/",
-    //   maxAge: 1000 * 60 * 60 * 24 * 30,
-    // });
-
     res.status(200).json({
       id: user[0].id,
       name: user[0].name,
