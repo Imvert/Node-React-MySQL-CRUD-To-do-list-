@@ -1,10 +1,11 @@
 //react imports
-import react, { useState } from "react";
+import { useState } from "react";
 import { useNavigate } from "react-router-dom";
 //personal imports
 import "../css/login.css";
 import { register } from "../api/register.api";
 import confetti from "canvas-confetti";
+
 export default function Register() {
   const [name, setName] = useState("");
   const [lastname, setlastname] = useState("");

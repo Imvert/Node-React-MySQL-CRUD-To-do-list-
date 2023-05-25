@@ -5,7 +5,7 @@ import { useUser } from "../context/UserContext";
 import Loader from "../components/loader";
 
 export default function Login() {
-  const { user, loadUser } = useUser();
+  const { loadUser } = useUser();
   const navigate = useNavigate();
 
   const [errorMessage, setErrorMessage] = useState(null);
@@ -61,6 +61,7 @@ export default function Login() {
             <input
               required
               type="text"
+              placeholder="mercedes25"
               value={username}
               onChange={({ target }) => setUsername(target.value)}
               className="input"
@@ -74,6 +75,7 @@ export default function Login() {
             <input
               required
               type="password"
+              placeholder="***********"
               className="input"
               value={password}
               onChange={({ target }) => setPassword(target.value)}

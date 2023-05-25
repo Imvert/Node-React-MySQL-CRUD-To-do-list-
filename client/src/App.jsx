@@ -1,4 +1,5 @@
 import { Route, Routes } from "react-router-dom";
+import { useEffect } from "react";
 import TasksPage from "./pages/TaskPage";
 import TaskForm from "./pages/TaskForm";
 import NotFound from "./pages/NotFound";
@@ -7,8 +8,20 @@ import { TaskContextProvider } from "./context/TaskContext";
 import { UserContextProvider } from "./context/UserContext";
 import Login from "./pages/Login";
 import Register from "./pages/Register";
+import { useNavigate } from "react-router-dom";
 
 function App() {
+  const navigate = useNavigate();
+
+  useEffect(() => {
+    const AutenticatedUser = window.localStorage.getItem("loggedNoteAppUser");
+    var data = JSON.parse(AutenticatedUser);
+
+    {
+      data == null ? navigate("/") : navigate("/tasks");
+    }
+  }, []);
+
   return (
     <div className="bg-zinc-900 h-screen">
       <UserContextProvider>

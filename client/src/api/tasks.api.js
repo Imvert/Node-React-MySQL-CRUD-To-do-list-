@@ -16,7 +16,13 @@ export const createTaskRequest = async (task, token) => {
       Authorization: `Bearer ${token}`,
     },
   };
-  await axios.post("http://localhost:4001/api/task", task, config);
+  const response = await axios.post(
+    "http://localhost:4001/api/task",
+    task,
+    config
+  );
+
+  return response;
 };
 
 export const deleteTaskRequest = async (id, token) => {
@@ -26,7 +32,11 @@ export const deleteTaskRequest = async (id, token) => {
     },
   };
 
-  await axios.delete(`http://localhost:4001/api/task/${id}`, config);
+  const response = await axios.delete(
+    `http://localhost:4001/api/task/${id}`,
+    config
+  );
+  return response;
 };
 
 //Obtiene un solo resultado por id
@@ -45,7 +55,12 @@ export const updateTaskRequest = async (id, newfields, token) => {
       Authorization: `Bearer ${token}`,
     },
   };
-  await axios.put(`http://localhost:4001/api/task/${id}`, newfields, config);
+  const response = await axios.put(
+    `http://localhost:4001/api/task/${id}`,
+    newfields,
+    config
+  );
+  return response;
 };
 
 //Es el mismo endpoint que el updateTask solo que nomas actualiza de estado la tarea (Done)
@@ -56,5 +71,10 @@ export const toggleTaskDoneRequest = async (id, done, token) => {
     },
   };
 
-  await axios.put(`http://localhost:4001/api/task/${id}`, { done }, config);
+  const response = await axios.put(
+    `http://localhost:4001/api/task/${id}`,
+    { done },
+    config
+  );
+  return response;
 };
