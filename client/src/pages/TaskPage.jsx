@@ -10,11 +10,11 @@ function TasksPage() {
   const { token } = user;
 
   useEffect(() => {
-    async function getTaks() {
+    async function getTasks() {
       const { data } = await loadTasks(token);
       window.localStorage.setItem("tasksApp", JSON.stringify(data));
     }
-    getTaks();
+    getTasks();
   }, []);
 
   useEffect(() => {
