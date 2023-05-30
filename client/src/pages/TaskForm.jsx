@@ -4,7 +4,7 @@ import { useParams, useNavigate } from "react-router-dom";
 import { useTasks } from "../context/TaskContext";
 import { useUser } from "../context/UserContext";
 import confetti from "canvas-confetti";
-// import Swal from "sweetalert2";
+import Swal from "sweetalert2";
 
 function TaskForm() {
   const [errorMsg, setErrorMsg] = useState(null);
@@ -28,20 +28,20 @@ function TaskForm() {
     loadTask();
   }, []);
 
-  // const alertTokenExpired = () => {
-  //   Swal.fire({
-  //     icon: "error",
-  //     title: "Oops...",
-  //     text: "Tus credenciales han expirado, logueate de nuevo porfavor",
-  //     footer: "SERAS REDERIGIDO AL LOGIN",
-  //     timer: 3000,
-  //   });
-  //   window.localStorage.clear();
-  //   navigate("/");
-  // };
+  const alertTokenExpired = () => {
+    Swal.fire({
+      icon: "error",
+      title: "Oops...",
+      text: "Tus credenciales han expirado, logueate de nuevo porfavor",
+      footer: "SERAS REDERIGIDO AL LOGIN",
+      timer: 3000,
+    });
+    window.localStorage.clear();
+    navigate("/");
+  };
 
   return (
-    <div className="py-10">
+    <div className="py-10 h-screen">
       <Formik
         initialValues={task}
         enableReinitialize={true}
@@ -49,12 +49,12 @@ function TaskForm() {
           if (params.id) {
             const updateResponse = await updateTask(params.id, values, token);
             if (updateResponse.status == 401) {
-              // alertTokenExpired();
+              alertTokenExpired();
             }
           } else {
             const createResponse = await createTask(values, token);
             if (createResponse.status == 401) {
-              // alertTokenExpired();
+              alertTokenExpired();
             }
           }
           confetti();
@@ -71,7 +71,7 @@ function TaskForm() {
             className="bg-slate-300 max-w-sm rounded-md p-4 mx-auto"
           >
             <h1 className="text-xl font-bold text-center">
-              {params?.id ? "Edit Task" : "New Task"}
+              {params.id ? "Edit Task" : "New Task"}
             </h1>
             <label className="block">Title</label>
             <input
