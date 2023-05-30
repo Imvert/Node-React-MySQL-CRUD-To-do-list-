@@ -44,7 +44,7 @@ export default function Register() {
   return (
     <div
       className="form-container"
-      style={{ marginLeft: "130px", marginTop: "40px" }}
+      style={{ marginLeft: "130px", marginTop: "40px", marginBottom: "37px" }}
     >
       <div className="login-container ">
         <h2>Registrarse</h2>

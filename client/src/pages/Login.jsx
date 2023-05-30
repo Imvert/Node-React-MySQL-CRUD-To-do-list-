@@ -48,7 +48,7 @@ export default function Login() {
 
   return (
     <div
-      className="form-container"
+      className="form-container mb-[117px]"
       style={{ marginLeft: "130px", marginTop: "40px" }}
     >
       <div className="login-container">

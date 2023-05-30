@@ -41,7 +41,7 @@ function TaskForm() {
   };
 
   return (
-    <div className="py-10 h-screen">
+    <div className="py-10 mb-[215px]">
       <Formik
         initialValues={task}
         enableReinitialize={true}

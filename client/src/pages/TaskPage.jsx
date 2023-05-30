@@ -9,11 +9,12 @@ function TasksPage() {
 
   const { token } = user;
 
+  async function getTasks() {
+    const { data } = await loadTasks(token);
+    window.localStorage.setItem("tasksApp", JSON.stringify(data));
+  }
+
   useEffect(() => {
-    async function getTasks() {
-      const { data } = await loadTasks(token);
-      window.localStorage.setItem("tasksApp", JSON.stringify(data));
-    }
     getTasks();
   }, []);
 
@@ -22,6 +23,7 @@ function TasksPage() {
     if (taskslocal) {
       const data = JSON.parse(taskslocal);
       setTasks(data);
+      getTasks();
     }
   }, []);
 
