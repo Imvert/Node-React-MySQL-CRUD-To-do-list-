@@ -5,7 +5,7 @@ export default function NotFound() {
     <div>
       <img
         className="ml-64 pt-5"
-        src="../public/assets/page-notFound.png"
+        src="/assets/page-notFound.png"
         alt="no encontrada"
       />
     </div>
