@@ -10,7 +10,7 @@ import tasksRoutes from "./routes/task.routes.js";
 const app = express();
 // const __dirname = dirname(fileURLToPath(import.meta.url));
 app.use(cookieParser());
-app.use(cors());
+app.use(cors({ origin: "http://localhost:3000", credentials: true }));
 app.use(express.json());
 
 //Rutas usadas

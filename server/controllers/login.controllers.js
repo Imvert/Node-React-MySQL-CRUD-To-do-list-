@@ -34,6 +34,8 @@ export const loginUser = async (req, res) => {
       Secret_key
     );
 
+    //coockie establecida falta por utilizarla en el front-end
+    res.cookie("user-coockie", token);
     res.status(200).json({
       id: user[0].id,
       name: user[0].name,
