@@ -8,9 +8,15 @@ import indexRoutes from "./routes/index.routes.js";
 import tasksRoutes from "./routes/task.routes.js";
 
 const app = express();
+
+const whiteList = [
+  "http://localhost:3000",
+  "https://appnotes-17jx.onrender.com/",
+];
+
 const __dirname = dirname(fileURLToPath(import.meta.url));
 app.use(cookieParser());
-app.use(cors({ origin: "http://localhost:3000", credentials: true }));
+app.use(cors({ origin: whiteList, credentials: true }));
 app.use(express.json());
 
 //Rutas usadas
