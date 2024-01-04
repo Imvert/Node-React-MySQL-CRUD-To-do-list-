@@ -22,11 +22,6 @@ export default function Login() {
         password,
       });
 
-      window.localStorage.setItem(
-        "loggedNoteAppUser",
-        JSON.stringify(response)
-      );
-
       if (response == undefined) {
         setErrorMessage("wrong credentials");
         setTimeout(() => {
@@ -36,6 +31,11 @@ export default function Login() {
         setUsername("");
         setPassword("");
         setLoading(true);
+
+        window.localStorage.setItem(
+          "loggedNoteAppUser",
+          JSON.stringify(response)
+        );
 
         setTimeout(() => {
           navigate(`/tasks`);

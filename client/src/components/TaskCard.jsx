@@ -50,10 +50,10 @@ function TaskCard({ task }) {
   return (
     <div className="bg-slate-300 rounded-md p-4">
       <header className="flex justify-between">
-        <h2 className="text-sm font-bold">{task?.title}</h2>
+        <h2 className="text-md font-bold">{task?.title}</h2>
         <span>{task.done === 1 ? "✅" : "❌"}</span>
       </header>
-      <p className="text-xs">{task.description}</p>
+      <p className="text-sm text-balance ">{task.description}</p>
       <span>{task.createAt}</span>
       <div className="flex gap-x-1">
         <button

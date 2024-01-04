@@ -23,7 +23,7 @@ function App() {
   }, []);
 
   return (
-    <div className="bg-zinc-900 h-screen[100%]">
+    <div className=" bg-zinc-900 md:h-[100vh]  sm:h-screen-[100%]">
       <UserContextProvider>
         <Navbar />
         <div className="container mx-auto py-4">
