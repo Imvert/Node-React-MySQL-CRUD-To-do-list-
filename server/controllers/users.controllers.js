@@ -18,6 +18,6 @@ export const createUser = async (req, res) => {
       username,
     });
   } catch (error) {
-    return res.status(500).json({ msg: error.msg });
+    return res.status(500).json({ msg: error });
   }
 };
