@@ -1,4 +1,4 @@
-import axios from "axios";
+import axios from "../api/axios";
 //En userData se envia todos los datos para el registro
 export const register = async (userData) =>
-  await axios.post("http://localhost:4001/api/saveUser", userData);
+  await axios.post("/saveUser", userData);

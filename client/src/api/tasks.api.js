@@ -1,4 +1,4 @@
-import axios from "axios";
+import axios from "../api/axios";
 
 export const getTasksRequest = async (token) => {
   const config = {
@@ -6,7 +6,7 @@ export const getTasksRequest = async (token) => {
       Authorization: `Bearer ${token}`,
     },
   };
-  const response = await axios.get("http://localhost:4001/api/tasks", config);
+  const response = await axios.get("/tasks", config);
   return response;
 };
 
@@ -16,11 +16,7 @@ export const createTaskRequest = async (task, token) => {
       Authorization: `Bearer ${token}`,
     },
   };
-  const response = await axios.post(
-    "http://localhost:4001/api/task",
-    task,
-    config
-  );
+  const response = await axios.post("/task", task, config);
 
   return response;
 };
@@ -32,10 +28,7 @@ export const deleteTaskRequest = async (id, token) => {
     },
   };
 
-  const response = await axios.delete(
-    `http://localhost:4001/api/task/${id}`,
-    config
-  );
+  const response = await axios.delete(`/task/${id}`, config);
   return response;
 };
 
@@ -46,7 +39,7 @@ export const getTaskRequest = async (id, token) => {
       Authorization: `Bearer ${token}`,
     },
   };
-  return await axios.get(`http://localhost:4001/api/task/${id}`, config);
+  return await axios.get(`/task/${id}`, config);
 };
 
 export const updateTaskRequest = async (id, newfields, token) => {
@@ -55,11 +48,7 @@ export const updateTaskRequest = async (id, newfields, token) => {
       Authorization: `Bearer ${token}`,
     },
   };
-  const response = await axios.put(
-    `http://localhost:4001/api/task/${id}`,
-    newfields,
-    config
-  );
+  const response = await axios.put(`/task/${id}`, newfields, config);
   return response;
 };
 
@@ -71,10 +60,6 @@ export const toggleTaskDoneRequest = async (id, done, token) => {
     },
   };
 
-  const response = await axios.put(
-    `http://localhost:4001/api/task/${id}`,
-    { done },
-    config
-  );
+  const response = await axios.put(`/task/${id}`, { done }, config);
   return response;
 };
