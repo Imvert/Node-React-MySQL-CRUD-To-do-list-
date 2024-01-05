@@ -14,7 +14,7 @@ const whiteList = [
   "https://appnotes-17jx.onrender.com/",
 ];
 
-//const __dirname = dirname(fileURLToPath(import.meta.url));
+const __dirname = dirname(fileURLToPath(import.meta.url));
 app.use(cookieParser());
 app.use(cors({ origin: whiteList, credentials: true }));
 app.use(express.json());
@@ -24,7 +24,7 @@ app.use("/api", indexRoutes);
 app.use("/api", tasksRoutes);
 
 //uso de archivo estaticos para el frontend
-//app.use(express.static(join(__dirname, "../client/dist")));
+app.use(express.static(join(__dirname, "../client/dist")));
 
 app.use((req, res, next) => {
   res.status(404).json({ message: "endpoint not found" });
