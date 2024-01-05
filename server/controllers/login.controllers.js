@@ -43,6 +43,6 @@ export const loginUser = async (req, res) => {
       token,
     });
   } catch (error) {
-    return res.status(401).json({ msg: error.message });
+    return res.status(401).json({ msg: error });
   }
 };
