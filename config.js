@@ -8,3 +8,4 @@ export const PORT = process.env.PORT;
 export const USER = process.env.USER;
 export const PASSWORD = process.env.PASSWORD;
 export const DATABASE = process.env.DATABASE;
+export const FRONTEND_URL = procces.env.FRONTEND_URL || "http://localhost:3000";
