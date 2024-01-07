@@ -1,5 +1,6 @@
 import express from "express";
-import { PORT,FRONTEND_URL } from "./config.js";
+import { PORT } from "./config.js";
+import { FRONTEND_URL } from "../config.js";
 import cors from "cors";
 import { dirname, join } from "path";
 import { fileURLToPath } from "url";
