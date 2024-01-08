@@ -1,6 +1,9 @@
 {
   "name": "stack-mern-mysql",
   "version": "1.0.0",
+  "engines": {
+    "node": "20.10.0"
+  },
   "description": "to-do-list",
   "main": "index.js",
   "scripts": {
