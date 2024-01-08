@@ -15,4 +15,8 @@ router.get("/ping", async (req, res) => {
   res.send({ msg: "ping from DB" });
 });
 
+router.get("/pong", async (req, res) => {
+  res.send({ msg: "llegastes al endpoint" });
+});
+
 export default router;
