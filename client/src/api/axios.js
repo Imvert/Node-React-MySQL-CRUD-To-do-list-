@@ -1,7 +1,7 @@
 import axios from "axios";
 
 //configuracion especial para establecer la cookie en el frontend
-const URL = import.meta.env.VITE_BACKEND_URL;
+const URL = "http://localhost:10000" || import.meta.env.VITE_BACKEND_URL;
 
 const instance = axios.create({
   baseURL: `${URL}/api`,
