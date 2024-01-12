@@ -1,13 +1,13 @@
 import bcrypt from "bcrypt";
-import { pool } from "../db.js";
+import { pool, pgPool } from "../db.js";
 
 export const createUser = async (req, res) => {
   const { name, lastname, username, password } = req.body;
   const passwordHash = await bcrypt.hash(password, 10);
 
   try {
-    const [result] = await pool.query(
-      "INSERT INTO user(name,lastname,username,password) VALUES(?,?,?,?)",
+    const result = await pgPool.query(
+      "INSERT INTO public.user (name,lastname,username,password) VALUES ($1,$2,$3,$4)",
       [name, lastname, username, passwordHash]
     );
 

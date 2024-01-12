@@ -15,6 +15,7 @@ CREATE TABLE tasks(
   done BOOLEAN NOT NULL DEFAULT 0,
   createAt TIMESTAMP NOT NULL DEFAULT CURRENT_TIMESTAMP,
   user_id INTEGER NOT NULL,
+  //KEY user_id_idx (user_id) -> usar solo en planetscale
   FOREIGN KEY (user_id) REFERENCES user (id)
 );
 

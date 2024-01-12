@@ -1,5 +1,5 @@
 import { Router } from "express";
-import { pool } from "../db.js";
+import { pool, pgPool } from "../db.js";
 import { createUser } from "../controllers/users.controllers.js";
 import { loginUser } from "../controllers/login.controllers.js";
 
@@ -19,10 +19,17 @@ router.get("/ping", async (req, res) => {
   }
 });
 
+router.get("/now", async (req, res) => {
+  try {
+    const result = await pgPool.query("SELECT NOW()");
+    return res.json(result.rows[0]);
+  } catch (error) {
+    console.log(error);
+  }
+});
+
 router.get("/pong", async (req, res) => {
   res.send({ msg: "llegastes al endpoint" });
 });
-
-
 
 export default router;

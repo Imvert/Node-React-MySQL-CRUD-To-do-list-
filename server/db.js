@@ -1,5 +1,13 @@
 import { createPool } from "mysql2/promise";
-import { HOST, PORT, USER, PASSWORD, DATABASE } from "../config.js";
+import pg from "pg";
+import {
+  HOST,
+  PORT,
+  USER,
+  PASSWORD,
+  DATABASE,
+  CONECTION_STRING,
+} from "../config.js";
 
 export const pool = createPool({
   host: HOST,
@@ -7,8 +15,12 @@ export const pool = createPool({
   user: USER,
   password: PASSWORD,
   database: DATABASE,
-  connectTimeout:30000,
+  connectTimeout: 30000,
   ssl: {
     rejectUnauthorized: true,
   },
+});
+
+export const pgPool = new pg.Pool({
+  connectionString: CONECTION_STRING,
 });

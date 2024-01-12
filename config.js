@@ -11,8 +11,9 @@ export const DATABASE = process.env.DATABASE;
 export const FRONTEND_URL = process.env.FRONTEND_URL || "http://localhost:3000";
 
 //config para postgress
-export const HOST_NAME = process.env.HOST_NAME;
-export const DATABASE_NAME = process.env.DATABASE_NAME;
-export const USERNAME = process.env.USERNAME;
-export const PASSWORD_DB = process.env.PASSWORD_DB;
-export const PORT_DB = process.env.PORT_DB;
+export const HOST_NAME = process.env.PGHOST;
+export const DATABASE_NAME = process.env.PGDATABASE;
+export const USERNAME = process.env.PGUSER;
+export const PASSWORD_DB = process.env.PGPASSWORD;
+
+export const CONECTION_STRING = process.env.CONECTION_STRING;

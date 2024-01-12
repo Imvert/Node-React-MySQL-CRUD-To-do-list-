@@ -1,5 +1,5 @@
 import bcrypt from "bcrypt";
-import { pool } from "../db.js";
+import { pgPool} from "../db.js";
 import jwt from "jsonwebtoken";
 import { Secret_key } from "../../config.js";
 
@@ -8,7 +8,7 @@ export const loginUser = async (req, res) => {
   const { username, password } = body;
 
   try {
-    const [user] = await pool.query("SELECT * FROM user WHERE username = ?", [
+    const [user] = await pgPool.query("SELECT * FROM public.user WHERE username = $1", [
       username,
     ]);
 
@@ -43,6 +43,6 @@ export const loginUser = async (req, res) => {
       token,
     });
   } catch (error) {
-    return res.status(401).json({ msg: error });
+    return res.status(401).json({ msg: user });
   }
 };
