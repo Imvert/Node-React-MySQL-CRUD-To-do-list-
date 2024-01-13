@@ -7,7 +7,7 @@ export const createUser = async (req, res) => {
 
   try {
     const result = await pgPool.query(
-      "INSERT INTO public.user (name,lastname,username,password) VALUES ($1,$2,$3,$4)",
+      "INSERT INTO user (name,lastname,username,password) VALUES (?,?,?,?)",
       [name, lastname, username, passwordHash]
     );
 

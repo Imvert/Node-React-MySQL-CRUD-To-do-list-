@@ -11,9 +11,11 @@ router.post("/loginUser", loginUser);
 
 router.get("/ping", async (req, res) => {
   try {
-     const [rows] = await pool.query("SELECT 1 + 1 AS response");
+    const [rows] = await pool.query("SELECT 1 + 1 AS response");
     console.log(rows);
-    res.send({ msg: "ping from DB" });
+
+    res.send({ msg: "ping from DB", data: rows });
+    pool.end();
   } catch (error) {
     res.send({ falla: error });
   }

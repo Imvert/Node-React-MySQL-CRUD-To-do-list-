@@ -17,3 +17,4 @@ export const USERNAME = process.env.PGUSER;
 export const PASSWORD_DB = process.env.PGPASSWORD;
 
 export const CONECTION_STRING = process.env.CONECTION_STRING;
+export const DATABASE_URL = process.env.DATABASE_URL;
