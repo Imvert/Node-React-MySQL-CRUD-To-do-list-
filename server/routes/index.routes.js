@@ -3,7 +3,7 @@ import { pool, pgPool } from "../db.js";
 import { createUser } from "../controllers/users.controllers.js";
 import { loginUser } from "../controllers/login.controllers.js";
 import { DATABASE_URL } from "../../config.js";
-import { createConnection } from "mysql2";
+import { createConnection } from "mysql2/promise.js";
 
 const router = Router();
 
@@ -13,19 +13,19 @@ router.post("/loginUser", loginUser);
 
 router.get("/ping", async (req, res) => {
   try {
-    const conn = createConnection({
+    const conn = await createConnection({
       DATABASE_URL,
-      rowsAsArray: true,
     });
-    const rows = conn.query("SELECT 1 + 1 ");
+    const rows = await conn.query("SELECT 1 + 1 as response ");
     // const [rows] = await pool.query("SELECT 1 + 1 AS response");
     console.log(rows);
 
     res.send({
       msg: "ping from DB",
       msg2: "conexion exitosa a la bd",
+      data: rows,
     });
-    conn.end();
+    // conn.end();
   } catch (error) {
     res.send({ falla: error });
   }
