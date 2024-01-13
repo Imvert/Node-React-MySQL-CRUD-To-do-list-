@@ -1,4 +1,4 @@
-import { createPool } from "mysql2/promise";
+import { createPool, createConnection } from "mysql2/promise";
 import pg from "pg";
 import {
   HOST,
@@ -9,7 +9,7 @@ import {
   CONECTION_STRING,
 } from "../config.js";
 
-export const pool = createPool({
+export const pool = createConnection({
   host: HOST,
   port: PORT,
   user: USER,
