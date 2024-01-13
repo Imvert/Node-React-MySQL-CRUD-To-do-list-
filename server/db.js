@@ -15,8 +15,6 @@ export const pool = createPool({
   user: USER,
   password: PASSWORD,
   database: DATABASE,
-  connectTimeout: 10000,
-  enableKeepAlive: true,
   ssl: {
     rejectUnauthorized: true,
   },
