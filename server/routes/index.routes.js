@@ -13,12 +13,18 @@ router.post("/loginUser", loginUser);
 
 router.get("/ping", async (req, res) => {
   try {
-    const conn = createConnection(DATABASE_URL);
+    const conn = createConnection({
+      DATABASE_URL,
+      rowsAsArray: true,
+    });
     const rows = conn.query("SELECT 1 + 1 ");
     // const [rows] = await pool.query("SELECT 1 + 1 AS response");
-    // console.log(rows);
+    console.log(rows);
 
-    res.send({ msg: "ping from DB", msg2: "conexion exitosa a la bd" });
+    res.send({
+      msg: "ping from DB",
+      msg2: "conexion exitosa a la bd",
+    });
     conn.end();
   } catch (error) {
     res.send({ falla: error });

@@ -10,6 +10,8 @@ import {
   DATABASE_URL,
 } from "../config.js";
 
+export const conection = createConnection(DATABASE_URL);
+
 export const pool = createPool({
   host: HOST,
   port: PORT,
