@@ -1,24 +1,31 @@
 import bcrypt from "bcrypt";
-import { pool, pgPool, conection } from "../db.js";
+import { conection } from "../db.js";
 
 export const createUser = async (req, res) => {
   const { name, lastname, username, password } = req.body;
   const passwordHash = await bcrypt.hash(password, 10);
 
   try {
-    const result = (await conection).query(
+    const result = await (
+      await conection
+    ).query(
       "INSERT INTO user (name,lastname,username,password) VALUES (?,?,?,?)",
       [name, lastname, username, passwordHash]
     );
+    //extraemos el id que se inserta
+    const userId = result[0].insertId;
 
     res.status(201).json({
-      id: result.insertId,
+      id: userId,
       name,
       lastname,
       username,
     });
-    // conection.end();
   } catch (error) {
-    return res.status(500).json({ msg: error });
+    if (error.errno) {
+      res.status(400).json({ msg: "Este usuario ya existe" });
+    } else {
+      res.status(400).json({ msg: error });
+    }
   }
 };

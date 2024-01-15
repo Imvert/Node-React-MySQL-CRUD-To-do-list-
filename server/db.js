@@ -10,8 +10,10 @@ import {
   DATABASE_URL,
 } from "../config.js";
 
-export const conection = createConnection(DATABASE_URL);
+//CONEXION PARA PRODUCCION EN PLANETSCALE
+export const conection = createConnection(DATABASE_URL, { rowsAsArray: true });
 
+// Conexion mysql con createPool solo funciona en local
 export const pool = createPool({
   host: HOST,
   port: PORT,
@@ -25,6 +27,7 @@ export const pool = createPool({
   },
 });
 
+//conexion a postgress
 export const pgPool = new pg.Pool({
   connectionString: CONECTION_STRING,
 });
