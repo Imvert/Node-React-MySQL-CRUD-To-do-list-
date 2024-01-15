@@ -43,6 +43,8 @@ export const loginUser = async (req, res) => {
       token,
     });
   } catch (error) {
-    return res.status(401).json({ msg: user });
+    return res
+      .status(400)
+      .json({ msg: "Ups ocurrio un problema, intentelo de nuevo" });
   }
 };

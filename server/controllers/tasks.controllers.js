@@ -1,12 +1,13 @@
-import { pool } from "../db.js";
+import { conection } from "../db.js";
 
 export const getTasks = async (req, res) => {
   const { user_id } = req;
   try {
-    const [result] = await pool.query(
-      "SELECT * FROM tasks WHERE user_id = ? ORDER BY createAt ASC ",
-      [user_id]
-    );
+    const [result] = await (
+      await conection
+    ).query("SELECT * FROM tasks WHERE user_id = ? ORDER BY createAt ASC ", [
+      user_id,
+    ]);
     res.json(result);
   } catch (error) {
     return res.status(500).json({ msg: error.msg });
