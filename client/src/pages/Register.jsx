@@ -109,7 +109,6 @@ export default function Register() {
               style={{ marginBottom: "20px", marginTop: "20px" }}
               className="btn btn-login-register hover:bg-blue-600"
               value="Registrarse"
-              onClick={handleSubmit}
             />
           </p>
         </form>

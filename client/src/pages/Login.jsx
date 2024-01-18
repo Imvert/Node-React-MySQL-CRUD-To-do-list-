@@ -47,10 +47,7 @@ export default function Login() {
   };
 
   return (
-    <div
-      className="form-container mb-[117px]"
-      style={{ marginLeft: "130px", marginTop: "40px" }}
-    >
+    <div className="form-container mx-auto h-[81vh] md:h-full">
       <div className="login-container">
         <h2>Welcome</h2>
         <p>Crea tus notas y nunca las olvides 📘</p>
@@ -97,7 +94,7 @@ export default function Login() {
           <input
             type="submit"
             style={{ marginBottom: "20px", marginTop: "20px" }}
-            className="btn btn-login-register"
+            className="btn btn-login-register hover:bg-blue-500"
             value="Registrarse"
             onClick={() => navigate(`/register`)}
           />

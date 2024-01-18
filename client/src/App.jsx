@@ -23,10 +23,11 @@ function App() {
   }, []);
 
   return (
-    <div className=" bg-zinc-900 md:h-[100vh]  sm:h-screen-[100%]">
+    <div className=" bg-zinc-900 mx-auto md:h-[100vh] sm:h-screen-[100%]">
       <UserContextProvider>
         <Navbar />
-        <div className="container mx-auto py-4">
+        {/* este div sobrak */}
+        <div className=" mx-auto py-4">
           <TaskContextProvider>
             <Routes>
               <Route path="/" element={<Login />}></Route>
