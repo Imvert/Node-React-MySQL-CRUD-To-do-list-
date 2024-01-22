@@ -48,7 +48,7 @@ function TaskCard({ task }) {
   };
 
   return (
-    <div className="bg-slate-300 rounded-md p-4">
+    <div className="bg-slate-300 w-max sm:w-auto rounded-md p-4">
       <header className="flex justify-between">
         <h2 className="text-md font-bold">{task?.title}</h2>
         <span>{task.done === 1 ? "✅" : "❌"}</span>
@@ -69,7 +69,7 @@ function TaskCard({ task }) {
           Edit
         </button>
         <button
-          className="bg-green-500 px-2 py-1 text-white"
+          className="bg-green-500  px-2 py-1 text-white"
           onClick={() => handleDone(task.done)}
         >
           Toggle Task
