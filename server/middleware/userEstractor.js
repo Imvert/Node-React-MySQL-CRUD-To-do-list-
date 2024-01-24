@@ -4,7 +4,7 @@ import { Secret_key } from "../../config.js";
 export const tokenEstractor = (req, res, next) => {
   // const authorization = req.get("authorization");
   const authorization = `Bearer ${req.cookies.userCoockie}`;
-
+  console.log(authorization);
   let token = "";
 
   try {
