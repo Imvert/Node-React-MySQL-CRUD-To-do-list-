@@ -29,9 +29,9 @@ export default function Navbar() {
       <h3 className="text-white mr-10 flex flex-col md:flex-row">
         📘 Notas de
         {
-          <h5 className="text-yellow-300 md:ml-1 uppercase">
+          <p className="text-yellow-300 md:ml-1 uppercase">
             {user?.name || "la comunidad"}
-          </h5>
+          </p>
         }
       </h3>
       {!user?.name == "" ? (

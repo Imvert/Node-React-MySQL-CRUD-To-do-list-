@@ -2,7 +2,9 @@ import jwt from "jsonwebtoken";
 import { Secret_key } from "../../config.js";
 
 export const tokenEstractor = (req, res, next) => {
-  const authorization = req.get("authorization");
+  // const authorization = req.get("authorization");
+  const authorization = `Bearer ${req.cookies.userCoockie}`;
+
   let token = "";
 
   try {

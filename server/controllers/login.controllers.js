@@ -35,12 +35,15 @@ export const loginUser = async (req, res) => {
     );
 
     //coockie establecida falta por utilizarla en el front-end
-    res.cookie("user-coockie", token);
+    res.cookie("userCoockie", token, {
+      httpOnly: true,
+      secure: true,
+      sameSite: "lax",
+    });
     res.status(200).json({
       id: user[0].id,
       name: user[0].name,
       username: user[0].username,
-      token,
     });
   } catch (error) {
     return res
