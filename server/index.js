@@ -24,6 +24,11 @@ app.use("/api", tasksRoutes);
 
 app.use((req, res, next) => {
   res.status(404).json({ message: "endpoint not found" });
+  res.cookie("cookie", "cookieContent", {
+    httpOnly: true,
+    secure: true,
+    sameSite: "lax",
+  });
   next();
 });
 
