@@ -35,13 +35,7 @@ export const loginUser = async (req, res) => {
     );
 
     //coockie establecida falta por utilizarla en el front-end
-    res.cookie("userCoockie", token, {
-      path: "onrender.com",
-      domain: "onrender.com",
-      httpOnly: true,
-      secure: true,
-      sameSite: "strict",
-    });
+    res.cookie("userCoockie", token);
     res.status(200).json({
       id: user[0].id,
       name: user[0].name,
