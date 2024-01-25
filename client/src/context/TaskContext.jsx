@@ -22,14 +22,14 @@ export const TaskContextProvider = ({ children }) => {
   const [tasks, setTasks] = useState([]);
 
   async function loadTasks(token) {
-    const response = await getTasksRequest(token);
+    const response = await getTasksRequest();
     setTasks(response.data);
     return response;
   }
 
   const deleteTask = async (id, token) => {
     try {
-      const deleteResponse = await deleteTaskRequest(id, token);
+      const deleteResponse = await deleteTaskRequest(id);
       if (deleteResponse.status == 401) {
         return deleteResponse;
       } else {
@@ -40,40 +40,39 @@ export const TaskContextProvider = ({ children }) => {
     }
   };
 
-  const createTask = async (task, token) => {
+  const createTask = async (task) => {
     try {
-      const response = await createTaskRequest(task, token);
+      const response = await createTaskRequest(task);
       return response;
     } catch (error) {
       console.log(error);
     }
   };
 
-  const getTask = async (id, token) => {
+  const getTask = async (id) => {
     try {
-      const response = await getTaskRequest(id, token);
+      const response = await getTaskRequest(id);
       return response.data;
     } catch (error) {
       console.error(error);
     }
   };
 
-  const updateTask = async (id, newFields, token) => {
+  const updateTask = async (id, newFields) => {
     try {
-      const response = await updateTaskRequest(id, newFields, token);
+      const response = await updateTaskRequest(id, newFields);
       return response;
     } catch (error) {
       console.error(error);
     }
   };
 
-  const toggleTaskDone = async (id, token) => {
+  const toggleTaskDone = async (id) => {
     try {
       const taskFound = tasks.find((task) => task.id === id);
       const toggleResponse = await toggleTaskDoneRequest(
         id,
-        taskFound.done === 0 ? 1 : 0,
-        token
+        taskFound.done === 0 ? 1 : 0
       );
       if (toggleResponse.status == 401) {
         return toggleResponse;

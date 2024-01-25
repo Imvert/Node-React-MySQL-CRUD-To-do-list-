@@ -39,6 +39,7 @@ export const loginUser = async (req, res) => {
       httpOnly: true,
       secure: true,
       sameSite: "none",
+      expire: Math.floor(Date.now() / 1000) + 60 * 60 * 24 * 30,
     });
     res.status(200).json({
       id: user[0].id,
@@ -46,6 +47,7 @@ export const loginUser = async (req, res) => {
       username: user[0].username,
     });
   } catch (error) {
+    console.log(error);
     return res
       .status(400)
       .json({ msg: "Ups ocurrio un problema, intentelo de nuevo" });

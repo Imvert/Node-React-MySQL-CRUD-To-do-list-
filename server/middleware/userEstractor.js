@@ -4,7 +4,6 @@ import { Secret_key } from "../../config.js";
 export const tokenEstractor = (req, res, next) => {
   // const authorization = req.get("authorization");
   const authorization = `Bearer ${req.cookies.userCoockie}`;
-  console.log(authorization);
   let token = "";
 
   try {
@@ -18,6 +17,7 @@ export const tokenEstractor = (req, res, next) => {
     const decodedTokenId = decodedToken.userForToken.id; //el id del usuario
 
     if (!token || !decodedTokenId) {
+      res.clearCookie("userCoockie");
       return res.status(401).json({
         msg: "token missing or invalid",
       });

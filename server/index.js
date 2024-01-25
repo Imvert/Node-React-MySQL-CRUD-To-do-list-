@@ -23,9 +23,7 @@ app.use("/api", tasksRoutes);
 //app.use(express.static(join(__dirname, "../client/dist")));
 
 app.use((req, res, next) => {
-  res.cookie("cookie", "cookieContent");
   res.status(404).json({ message: "endpoint not found" });
-
   next();
 });
 

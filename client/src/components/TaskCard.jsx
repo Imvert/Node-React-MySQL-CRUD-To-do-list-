@@ -20,7 +20,7 @@ function TaskCard({ task }) {
   };
 
   const handleDone = async () => {
-    const toggleRsponse = await toggleTaskDone(task.id, user.token);
+    const toggleRsponse = await toggleTaskDone(task.id);
     if (toggleRsponse?.status == 401) {
       alertTokenExpired();
     }
@@ -41,7 +41,7 @@ function TaskCard({ task }) {
         if (deleteResponse?.status == 401) {
           alertTokenExpired();
         } else {
-          Swal.fire("Eliminado!", "La tarea se a aliminado.", "success");
+          Swal.fire("Eliminado!", "La tarea se a eliminado.", "success");
         }
       }
     });
@@ -51,7 +51,7 @@ function TaskCard({ task }) {
     <div className="bg-slate-300 w-auto sm:w-auto rounded-md p-4">
       <header className="flex justify-between">
         <h2 className="text-md font-bold">{task?.title}</h2>
-        <span>{task.done === 1 ? "✅" : "❌"}</span>
+        <span>{task.done == 1 ? "✅" : "❌"}</span>
       </header>
       <p className="text-sm text-balance ">{task.description}</p>
       <span>{task.createAt}</span>
