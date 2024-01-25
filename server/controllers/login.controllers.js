@@ -38,7 +38,7 @@ export const loginUser = async (req, res) => {
     res.cookie("userCoockie", token, {
       httpOnly: true,
       secure: true,
-      sameSite: "lax",
+      sameSite: "none",
     });
     res.status(200).json({
       id: user[0].id,

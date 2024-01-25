@@ -1,4 +1,5 @@
-/*este import una instancia creada de un archivo de axios configurado para establecer la cookie cuando se loguea*/
+/*este import una instancia creada de un archivo de axios configurado 
+para establecer la cookie cuando se loguea*/
 import axios from "../api/axios";
 
 const baseUrl = "/loginUser";
