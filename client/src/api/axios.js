@@ -5,6 +5,7 @@ const URL = import.meta.env.VITE_BACKEND_URL;
 
 const instance = axios.create({
   baseURL: `${URL}/api`,
-  withCredentials: true, //permite enviar las cookies al frontend
+  withCredentials: true,
+   //permite enviar las cookies al frontend
 });
 export default instance;

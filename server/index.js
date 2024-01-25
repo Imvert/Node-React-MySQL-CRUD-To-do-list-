@@ -16,8 +16,8 @@ app.use(cors({ origin: FRONTEND_URL, credentials: true }));
 app.use(express.json());
 
 //Rutas usadas
-app.use("/api", indexRoutes);
-app.use("/api", tasksRoutes);
+app.use("/api", indexRoutes,{arguments});
+app.use("/api", tasksRoutes,{arguments});
 
 //uso de archivo estaticos para el frontend
 //app.use(express.static(join(__dirname, "../client/dist")));
