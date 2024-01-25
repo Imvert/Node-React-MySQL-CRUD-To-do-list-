@@ -37,8 +37,8 @@ export const loginUser = async (req, res) => {
     //coockie establecida falta por utilizarla en el front-end
     res.cookie("userCoockie", token, {
       httpOnly: true,
-      secure: true,
-      sameSite: "strict",
+      // secure: true,
+      // sameSite: "strict",
     });
     res.status(200).json({
       id: user[0].id,
