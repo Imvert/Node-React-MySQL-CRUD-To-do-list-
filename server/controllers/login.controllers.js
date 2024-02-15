@@ -1,5 +1,5 @@
 import bcrypt from "bcrypt";
-import { conection } from "../db.js";
+import { pool } from "../db.js";
 import jwt from "jsonwebtoken";
 import { Secret_key } from "../../config.js";
 
@@ -8,9 +8,9 @@ export const loginUser = async (req, res) => {
   const { username, password } = body;
 
   try {
-    const [user] = await (
-      await conection
-    ).query("SELECT * FROM user WHERE username = ?", [username]);
+    const [user] = await pool.query("SELECT * FROM user WHERE username = ?", [
+      username,
+    ]);
 
     const passwordCorrect =
       user.length <= 0

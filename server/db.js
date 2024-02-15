@@ -7,11 +7,10 @@ import {
   PASSWORD,
   DATABASE,
   CONECTION_STRING,
-  DATABASE_URL,
 } from "../config.js";
 
 //CONEXION PARA PRODUCCION EN PLANETSCALE
-export const conection = createConnection(DATABASE_URL, { rowsAsArray: true });
+// export const conection = createConnection(DATABASE_URL, { rowsAsArray: true });
 
 // Conexion mysql con createPool solo funciona en local
 export const pool = createPool({
@@ -20,11 +19,6 @@ export const pool = createPool({
   user: USER,
   password: PASSWORD,
   database: DATABASE,
-  connectTimeout: 20000,
-
-  ssl: {
-    rejectUnauthorized: true,
-  },
 });
 
 //conexion a postgress

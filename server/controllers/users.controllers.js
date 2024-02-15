@@ -1,14 +1,12 @@
 import bcrypt from "bcrypt";
-import { conection } from "../db.js";
+import { pool } from "../db.js";
 
 export const createUser = async (req, res) => {
   const { name, lastname, username, password } = req.body;
   const passwordHash = await bcrypt.hash(password, 10);
 
   try {
-    const result = await (
-      await conection
-    ).query(
+    const result = await pool.query(
       "INSERT INTO user (name,lastname,username,password) VALUES (?,?,?,?)",
       [name, lastname, username, passwordHash]
     );
